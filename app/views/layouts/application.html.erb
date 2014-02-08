@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GoodTunes</title>
+  <%= stylesheet_link_tag    "application", media: "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= yield %>
+
+<ul style="border-top: 5px dotted #aaa; padding-top: 20px; margin-top: 50px">
+  <li><%= link_to 'homepage', root_path %></li>
+  <li><%= link_to 'races', races_path %> (go to a race page to donate + choose a song e.g. <a href="/races/1">race 1</a>)</li>
+  <li><%= link_to 'runners', users_path %></li>
+  <li><%= link_to 'songs', songs_path %></li>
+  <% if current_user %>
+  	<li><%= link_to "Sign out", signout_path, id: "sign_out" %></li>
+  <% else %>
+  	<li><%= link_to "Sign in with Facebook as a RUNNER", "/auth/facebook?runner=true", id: "sign_in" %></li>
+	<li><%= link_to "Sign in with Facebook to donate", "/auth/facebook", id: "sign_in" %></li>
+  <% end %>
+</ul>
+
+
+<p>TODO:</p>
+<ul>
+  <li>Add image uploads (probably to S3 using paperclip)</li>
+  <li>implement justgiving donation/callback loop</li>
+  <li>add optional limit of one song per donation</li>
+  <li>enable backbone shizzle (commented out in races view for now)</li>
+</ul>
+
+
+</body>
+</html>

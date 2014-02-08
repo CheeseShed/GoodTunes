@@ -1,0 +1,8 @@
+<h2>search for a song on spotify:</h2>
+<%= form_tag "/songs/search", :method => 'get' do %>
+  <p>
+    <%= text_field_tag "song", "" %>
+    <%= hidden_field_tag "playlist_id", @race.playlist.id %>
+    <%= submit_tag "find song" %>
+  </p>
+<% end %>

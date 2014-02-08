@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+<% if @user.races.length < 1 %>
+	<p>No races added yet. <%= link_to 'add one now?', new_race_path %></p>
+<% end %>
+
+<ul>
+<% @user.races.each do |race| %>
+	<li><%= race.id %></li>
+<% end %>
+</ul>

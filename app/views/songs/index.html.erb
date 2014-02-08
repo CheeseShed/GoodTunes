@@ -1,0 +1,24 @@
+<h1>Listing songs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @songs.each do |song| %>
+      <tr>
+        <td>id: <%= song.id %></td>
+        <td>spotify_id: <%= song.spotify_id %></td>
+        <td>name: <%= song.name %></td>
+        <td>artist: <%= song.artist %></td>
+        <td><%= link_to 'Show', song %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

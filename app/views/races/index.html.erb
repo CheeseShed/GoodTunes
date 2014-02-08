@@ -1,0 +1,43 @@
+<div id="races">
+
+  <h1>Listing all races on GoodTunes</h1>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Date</th>
+        <th>Target</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @races.each do |race| %>
+        <tr>
+          <td><%= race.name %></td>
+          <td><%= race.description %></td>
+          <td><%= race.date %></td>
+          <td><%= race.target %></td>
+          <td><%= link_to 'Show', race %></td>
+          
+          <% if race.can_modify?(current_user) %>
+            <td><%= link_to 'Edit', edit_race_path(race) %></td>
+            <td><%= link_to 'Delete', race, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<script type="text/javascript">
+  // $(function() {
+  //   window.router = new GoodTunes.Routers.RacesRouter({races: <%= @races.to_json.html_safe -%>});
+  //   Backbone.history.start();
+  // });
+</script>

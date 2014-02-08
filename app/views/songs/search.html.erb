@@ -1,0 +1,66 @@
+<h1>You searched for a song</h1>
+
+<!-- 
+
+#<MetaSpotify::Track:0x007f91cbd7d930
+  @name="Shoes For Running",
+  @uri="spotify:track:225gqtTcsE8cfFtfKNTVjt",
+  @popularity=0.56,
+  @artists=[
+    #<MetaSpotify::Artist:0x007f91cbd7d778
+      @name="Big Boi",
+      @uri="spotify:artist:2ht3wxeT69CzyKFChNnNAB">,
+    #<MetaSpotify::Artist:0x007f91cbd7d688
+      @name="B.o.B.",
+      @uri="spotify:artist:4b57EoM2xGmyytk5j9lmyU">
+  ],
+  @album=#<MetaSpotify::Album:0x007f91cbd7d458
+    @name="Vicious Lies and Dangerous Rumors",
+    @released="2012",
+    @uri="spotify:album:03L5vIoDkCn0STNBAwTDEF",
+    @available_territories=["ca", "mx", "us"]>,
+    @track_number=11,
+  @length=230.88,
+  @isrc_id="USUM71215456">,
+
+-->
+
+<ul>
+  <% @results[:tracks].each do |track| %>
+    <li><ul>
+      <li>trackname: <%= track.name %></li>
+      <li>trackuri: <a href="<%= track.uri %>"><%= track.uri %></a></li>
+      <li>artists:
+        <ul>
+          <% track.artists.each do |artist| %>
+            <li>artist: <%= artist.name %></li>
+          <% end %>
+        </ul>
+      </li>
+      <li>tracklength: <%= track.length/60 %> mins</li>
+    </ul></li>
+    <br />
+
+
+
+    <%= form_for(Song.new) do |f|%>
+      <p>
+        <%= hidden_field_tag "spotify_id", track.isrc_id %>
+        <%= hidden_field_tag "song", track.name %>
+        <%= hidden_field_tag "artist", track.artists.map(&:name).join(', ') %>
+        <%= hidden_field_tag "uri", track.uri %>
+        <%= hidden_field_tag "playlist_id", @playlist.id %>
+        <%= hidden_field_tag "race_id", @playlist.race.id %>
+        <%= submit_tag "add this song to playlist" %>
+      </p>
+    <% end %>
+
+
+
+    <br />
+    <br />
+    <br />
+  <% end %>
+</ul>
+
+<p><%= @results[:total_results] %>

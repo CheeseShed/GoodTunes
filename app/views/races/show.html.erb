@@ -1,0 +1,71 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @race.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @race.description %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @race.date %>
+</p>
+
+<p>
+  <strong>Target:</strong>
+  <%= @race.target %>
+</p>
+
+<p>Songs added so far:
+  <ul>
+    <% @race.playlist.songs.each do |song| %>
+      <li>
+      <ul>
+        <li>song spotify_id: <%= song.spotify_id %></li>
+        <li>song name: <%= song.name %></li>
+        <li>song artist: <%= song.artist %></li>
+        <li>song uri: <%= song.uri %></li>
+      </ul>
+      </li>
+    <% end %>
+  </ul>
+</p>
+
+<p>
+  <strong>Mainimage:</strong>
+  <%= @race.mainImage %>
+</p>
+
+<p>
+  <strong>Secondimage:</strong>
+  <%= @race.secondImage %>
+</p>
+
+<p>
+  <strong>Thirdimage:</strong>
+  <%= @race.thirdImage %>
+</p>
+
+<p><!--Route:</strong><%= @race.route_id %>--></p>
+
+<p><!-- playlist <%= @race.user_id %> --></p>
+
+<p><!-- playlist <%= @race.playlist.id %> --></p>
+
+<% if @race.can_modify?(current_user) %>
+  <%= link_to 'Edit', edit_race_path(@race) %> |
+<% end %>
+
+
+<% if current_user %>
+<%= render 'songform' %>
+<% else %>
+  <p><b><%= link_to "Sign in with Facebook to add a song", "/auth/facebook?redirect_uri=/races/#{@race.id}", id: "sign_in" %></b></p>
+<% end %>
+
+<p>TODO: redirect to justgiving and back again</p>
+<p>TODO: limit to one-song-per-donation</p>
