@@ -1,0 +1,27 @@
+<h1>Listing donations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>user_id</th>
+      <th>donationId></th>
+      <th>song name></th>
+      <th>artist></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @donations.each do |donation| %>
+      <tr>
+        <td><%= donation.id %></td>
+        <td><%= donation.user_id %></td>
+        <td><%= donation.donationId %></td>
+        <td><%= donation.song.name %></td>
+        <td><%= donation.song.artist %></td>
+        <td><%= link_to 'Show', donation %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

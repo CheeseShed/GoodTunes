@@ -1,5 +1,7 @@
 GoodTunes::Application.routes.draw do
 
+  resources :donations
+
   get 'songs/search' => 'songs#search'
 
   resources :songs
@@ -17,4 +19,5 @@ GoodTunes::Application.routes.draw do
   match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
   # end of Facebook shizzle
 
+  match 'justgiving/callback', to: 'justgivingcallback#index', via: [:get]
 end

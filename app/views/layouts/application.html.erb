@@ -15,6 +15,7 @@
   <li><%= link_to 'races', races_path %> (go to a race page to donate + choose a song e.g. <a href="/races/1">race 1</a>)</li>
   <li><%= link_to 'runners', users_path %></li>
   <li><%= link_to 'songs', songs_path %></li>
+  <li><%= link_to 'donations', donations_path %></li>
   <% if current_user %>
   	<li><%= link_to "Sign out", signout_path, id: "sign_out" %></li>
   <% else %>
@@ -27,7 +28,7 @@
 <p>TODO:</p>
 <ul>
   <li>Add image uploads (probably to S3 using paperclip)</li>
-  <li>implement justgiving donation/callback loop</li>
+  <li><del>implement justgiving donation/callback loop</del></li>
   <li>add optional limit of one song per donation</li>
   <li>enable backbone shizzle (commented out in races view for now)</li>
 </ul>

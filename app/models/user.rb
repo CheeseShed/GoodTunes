@@ -13,4 +13,27 @@ class User < ActiveRecord::Base
   end
 
   has_many :races
+  has_many :donations
+
+  def hasValidDonation
+    x = self.donations.includes(:song).where(songs:{id: nil})
+    
+    logger.info("* * * * * * * * * * ** * * * * ** * * *")
+    logger.info("* * * * * * * * * * ** * * * * ** * * *")
+    logger.info("* * * * * * * * * * ** * * * * ** * * *")
+    logger.info("* * * * * * * * * * ** * * * * ** * * *")
+    logger.info("* * * * * * * * * * ** * * * * ** * * *")
+    logger.info("* * * * * * * * * * ** * * * * ** * * *")
+    logger.info("* * * * * * * * * * ** * * * * ** * * *")
+    logger.info("* * * * * * * * * * ** * * * * ** * * *")
+    logger.info("* * * * * * * * * * ** * * * * ** * * *")
+    logger.info("* * * * * * * * * * ** * * * * ** * * *")
+
+    if x.length > 0
+      logger.info(x[0].id)
+      true
+    else 
+      false
+    end
+  end
 end

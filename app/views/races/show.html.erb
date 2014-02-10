@@ -29,6 +29,7 @@
         <li>song name: <%= song.name %></li>
         <li>song artist: <%= song.artist %></li>
         <li>song uri: <%= song.uri %></li>
+        <li>TODO: donated by: ???</li>
       </ul>
       </li>
     <% end %>
@@ -62,10 +63,19 @@
 
 
 <% if current_user %>
-<%= render 'songform' %>
+
+  <!-- TODO: CHECK IF USER HAS A VALID DONATION..... -->
+  <% if current_user.hasValidDonation %>
+    <p>has valid donation(<%= @x %>), can pick a song:</p>
+    <%= render 'songform' %>
+  <% else %>
+    <p>cannot pick a song yet yet:
+    <ul>
+      <li>prod: <a href="http://www.justgiving.com/Paul-Carvill/donate?amount=1&exitUrl=http%3a%2f%2fgu.com/">go to justgiving...</a></li>
+      <li>dev <a href="/justgiving/callback?race_id=1">click here to test justgiving donation :)</a></li>
+    </ul>
+  <% end %>
+
 <% else %>
   <p><b><%= link_to "Sign in with Facebook to add a song", "/auth/facebook?redirect_uri=/races/#{@race.id}", id: "sign_in" %></b></p>
 <% end %>
-
-<p>TODO: redirect to justgiving and back again</p>
-<p>TODO: limit to one-song-per-donation</p>

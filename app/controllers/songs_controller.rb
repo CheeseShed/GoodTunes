@@ -8,6 +8,20 @@ class SongsController < ApplicationController
     search = MetaSpotify::Track.search(song)
     logger.info(search)
     @results = search
+
+    @donationId = User.find(session[:user_id]).donations.includes(:song).where(songs:{id: nil}).first.id
+
+    logger.info("& & & & & & & & & & & & & & & & & & & & &")
+    logger.info("& & & & & & & & & & & & & & & & & & & & &")
+    logger.info("& & & & & & & & & & & & & & & & & & & & &")
+    logger.info("& & & & & & & & & & & & & & & & & & & & &")
+    logger.info("& & & & & & & & & & & & & & & & & & & & &")
+    logger.info("& & & & & & & & & & & & & & & & & & & & &")
+    logger.info("& & & & & & & & & & & & & & & & & & & & &")
+    logger.info("& & & & & & & & & & & & & & & & & & & & &")
+    logger.info("& & & & & & & & & & & & & & & & & & & & &")
+    logger.info("& & & & & & & & & & & & & & & & & & & & &")
+    logger.info(@donationId)
   end
 
   # GET /songs
@@ -35,6 +49,7 @@ class SongsController < ApplicationController
   def create
     @song = Song.new()
     @song.playlists << @playlist
+    @song.donation_id = params[:donation_id]
     @song.spotify_id = params[:spotify_id]
     @song.name = params[:song]
     @song.artist = params[:artist]

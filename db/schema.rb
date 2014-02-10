@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140208213704) do
+ActiveRecord::Schema.define(version: 20140209165015) do
+
+  create_table "donations", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.string   "donationId"
+  end
 
   create_table "playlists", force: true do |t|
     t.datetime "created_at"
@@ -39,14 +46,8 @@ ActiveRecord::Schema.define(version: 20140208213704) do
     t.datetime "updated_at"
   end
 
-  create_table "songs", force: true do |t|
-    t.string   "spotify_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "name"
-    t.string   "artist"
-    t.string   "uri"
-  end
+# Could not dump table "songs" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
   create_table "users", force: true do |t|
     t.string   "name"

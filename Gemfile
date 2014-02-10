@@ -33,6 +33,8 @@ gem 'meta-spotify'
 
 gem "rails-backbone"
 
+gem "seed_dump"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
