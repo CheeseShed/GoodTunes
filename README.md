@@ -12,6 +12,7 @@ Charity Marathon Running Sponsored Spotify Playlist Creator
 * `vagrant ssh`
 * `cd /vagrant`
 * bundle install
+* rake db:drop
 * rake db:migrate
 * rake db:seed
 * `rails server`

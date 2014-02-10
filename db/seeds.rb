@@ -28,6 +28,13 @@ when "development"
 	  {spotify_id: "USRC10700303", name: "She Builds Quick Machines", artist: "Velvet Revolver", uri: "spotify:track:5kwVVnZ8ZjJanBbGmrbHsb", donation_id: 4},
 	  {spotify_id: "FRZID1100110", name: "Where Them Girls At (feat. Nicki Minaj & Flo Rida)", artist: "David Guetta", uri: "spotify:track:7xV6oF0LMnrXKEs6JrWQXf", donation_id: 5}
 	])
+
+	Song.find(1).playlists << Playlist.find(1)
+	Song.find(2).playlists << Playlist.find(1)
+	Song.find(3).playlists << Playlist.find(1)
+	Song.find(4).playlists << Playlist.find(1)
+	Song.find(5).playlists << Playlist.find(1)
+
 	User.create!([
 	  {name: "Karen Amgfidaiihhg Baoescu", provider: "facebook", uid: "100007694199887", oauth_token: nil, oauth_expires_at: nil, isRunner: false},
 	  {name: "Dorothy Amggfiaidjga Schrockmanescubergsonsteinsenwitzsky", provider: "facebook", uid: "100007769194071", oauth_token: nil, oauth_expires_at: nil, isRunner: true}
