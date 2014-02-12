@@ -11,20 +11,6 @@ class RacesController < ApplicationController
   # GET /races/1.json
   def show
     session[:race_id] = @race.id
-
-    logger.info("- - - - - - - - - - - - - - - - - - -- - - -")
-    logger.info("- - - - - - - - - - - - - - - - - - -- - - -")
-    logger.info("- - - - - - - - - - - - - - - - - - -- - - -")
-    logger.info("- - - - - - - - - - - - - - - - - - -- - - -")
-    logger.info("- - - - - - - - - - - - - - - - - - -- - - -")
-    logger.info("- - - - - - - - - - - - - - - - - - -- - - -")
-    logger.info(session[:race_id])
-    logger.info("- - - - - - - - - - - - - - - - - - -- - - -")
-    logger.info("- - - - - - - - - - - - - - - - - - -- - - -")
-    logger.info("- - - - - - - - - - - - - - - - - - -- - - -")
-    logger.info("- - - - - - - - - - - - - - - - - - -- - - -")
-    logger.info("- - - - - - - - - - - - - - - - - - -- - - -")
-    logger.info("- - - - - - - - - - - - - - - - - - -- - - -")
   end
 
   # GET /races/new

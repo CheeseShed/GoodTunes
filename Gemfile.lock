@@ -27,7 +27,15 @@ GEM
       tzinfo (~> 0.3.37)
     arel (4.0.1)
     atomic (1.1.14)
+    aws-sdk (1.34.0)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
+      uuidtools (~> 2.1)
     builder (3.1.4)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.3)
+      climate_control (>= 0.0.3, < 1.0)
     coffee-script (2.2.0)
       coffee-script-source
       execjs
@@ -59,10 +67,13 @@ GEM
     meta-spotify (0.3.2)
       httparty (> 0.8)
     mime-types (1.25.1)
+    mini_portile (0.5.2)
     minitest (4.7.5)
     multi_json (1.8.4)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
+    nokogiri (1.6.1)
+      mini_portile (~> 0.5.0)
     oauth2 (0.9.3)
       faraday (>= 0.8, < 0.10)
       jwt (~> 0.1.8)
@@ -79,6 +90,11 @@ GEM
       multi_json (~> 1.3)
       oauth2 (~> 0.9.3)
       omniauth (~> 1.2)
+    paperclip (4.1.0)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.5.3)
+      mime-types
     polyglot (0.3.3)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -139,16 +155,19 @@ GEM
     uglifier (2.4.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    uuidtools (2.1.4)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  aws-sdk
   execjs
   jbuilder (~> 1.2)
   jquery-rails
   meta-spotify
   omniauth-facebook
+  paperclip
   rails (= 4.0.0)
   rails-backbone
   sass-rails (~> 4.0.0)

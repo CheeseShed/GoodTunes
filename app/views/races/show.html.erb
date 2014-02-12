@@ -38,17 +38,20 @@
 
 <p>
   <strong>Mainimage:</strong>
-  <%= @race.mainImage %>
+  <p>img url: <%= @race.mainImage %></p>
+  <img src="<%= @race.mainImage %>" width="100px" height="100px" />
 </p>
 
 <p>
   <strong>Secondimage:</strong>
-  <%= @race.secondImage %>
+  <p>img url: <%= @race.secondImage %></p>
+  <img src="<%= @race.secondImage %>" />
 </p>
 
 <p>
   <strong>Thirdimage:</strong>
-  <%= @race.thirdImage %>
+  <p>img url: <%= @race.thirdImage %></p>
+  <img src="<%= @race.thirdImage %>" />
 </p>
 
 <p><!--Route:</strong><%= @race.route_id %>--></p>

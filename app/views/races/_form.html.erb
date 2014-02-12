@@ -27,6 +27,21 @@
     <%= f.label "target (£££)" %><br>
     <%= f.number_field :target %>
   </div>
+
+  <div class="field">
+  <%= f.label :mainImage %><br />
+  <%= f.file_field :mainImage %>
+</div>
+
+<div class="field">
+  <%= f.label :secondImage %><br />
+  <%= f.file_field :secondImage %>
+</div>
+
+<div class="field">
+  <%= f.label :thirdImage %><br />
+  <%= f.file_field :thirdImage %>
+</div>
     <%= f.hidden_field :user_id %>
   <div class="actions">
     <%= f.submit %>

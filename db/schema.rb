@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140209165015) do
+ActiveRecord::Schema.define(version: 20140212214146) do
 
   create_table "donations", force: true do |t|
     t.datetime "created_at"
@@ -36,14 +36,23 @@ ActiveRecord::Schema.define(version: 20140209165015) do
     t.string   "description"
     t.string   "date"
     t.integer  "target"
-    t.binary   "mainImage"
-    t.binary   "secondImage"
-    t.binary   "thirdImage"
     t.integer  "route_id"
     t.integer  "user_id"
     t.integer  "playlist_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "mainImage_file_name"
+    t.string   "mainImage_content_type"
+    t.integer  "mainImage_file_size"
+    t.datetime "mainImage_updated_at"
+    t.string   "secondImage_file_name"
+    t.string   "secondImage_content_type"
+    t.integer  "secondImage_file_size"
+    t.datetime "secondImage_updated_at"
+    t.string   "thirdImage_file_name"
+    t.string   "thirdImage_content_type"
+    t.integer  "thirdImage_file_size"
+    t.datetime "thirdImage_updated_at"
   end
 
 # Could not dump table "songs" because of following NoMethodError
