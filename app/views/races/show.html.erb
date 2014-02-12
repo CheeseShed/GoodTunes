@@ -69,10 +69,21 @@
     <p>has valid donation(<%= @x %>), can pick a song:</p>
     <%= render 'songform' %>
   <% else %>
+    <% if @validDonation == false %>
+    <p>invalid donation code, sorry</p>
+    <% end %>
+
     <p>cannot pick a song yet yet:
     <ul>
-      <li>prod: <a href="http://www.justgiving.com/Paul-Carvill/donate?amount=1&exitUrl=http%3a%2f%2fgu.com/">go to justgiving...</a></li>
-      <li>dev <a href="/justgiving/callback?race_id=1">click here to test justgiving donation :)</a></li>
+      <li>prod: <a href="http://www.justgiving.com/Paul-Carvill/donate?amount=1&exitUrl=http://0.0.0.0:3000/justgiving/callback?donationId=JUSTGIVING-DONATION-ID">make a real donation via justgiving</a></li>
+      <li>dev: <a href="/justgiving/callback?donationId=55555">click here to bypass donation</a></li>
+      <li>justgiving sandbox: <a href="http://v3-sandbox.justgiving.com/Paul-Carvill/donate?amount=1&exitUrl=http://0.0.0.0:3000/justgiving/callback?donationId=JUSTGIVING-DONATION-ID">click here to test a justgiving donation (use payment deets below)</a></li>
+
+      <p>Master Card</p>
+      <p>5105105105105100</p>
+      <p>Any valid looking expiry date / start date / CV2 code</p>
+      <p>Enter 12345 to pass the card verification step</p>
+
     </ul>
   <% end %>
 

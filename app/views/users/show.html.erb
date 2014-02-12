@@ -5,12 +5,20 @@
   <%= @user.name %>
 </p>
 
-<% if @user.races.length < 1 %>
-	<p>No races added yet. <%= link_to 'add one now?', new_race_path %></p>
+<% if @user == current_user %>
+this is you
+	<% if @user.isRunner? %>
+		you are a runner
+		<% if @user.races.length < 1 %>
+			<p>No races added yet. <%= link_to 'add one now?', new_race_path %></p>
+		<% else %>
+			<p>you have <%= @user.races.length %> race. <%= link_to 'add another?', new_race_path %></p>
+		<% end %>
+	<% end %>
 <% end %>
 
 <ul>
 <% @user.races.each do |race| %>
-	<li><%= race.id %></li>
+	<li><%= link_to race.name, race_path(race) %></p></li>
 <% end %>
 </ul>
