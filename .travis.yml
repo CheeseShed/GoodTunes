@@ -5,8 +5,18 @@ deploy:
   app: goodtunes-staging
   on:
     repo: CheeseShed/GoodTunes
-before_script:
-  - bundle exec rake db:drop
-  - bundle exec rake db:migrate
-  - bundle exec rake db:seed
 
+env: 
+  - RAILS_ENV=test
+before_script:
+  - "mysql -e 'create database my_app_test;'"
+  - "cp ./.travis.database.yml ./config/database.yml"
+script: 
+  - bundle exec rake db:schema:load
+  - bundle exec rake db:test:prepare
+  - bundle exec rake spec
+after_failure:
+  - "mysql -e 'show databases;'"
+  - "cat ./config/database.yml"
+  - "echo $RAILS_ENV"
+  - "bundle exec rake --version"
