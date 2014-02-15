@@ -10,9 +10,8 @@ env:
 before_script:
   - "cp ./.travis.database.yml ./config/database.yml"
 script: 
-  - bundle exec rake db:schema:load
-  - bundle exec rake db:test:prepare
-  - bundle exec rake spec
+  - bundle exec rake db:migrate
+  - bundle exec rake db:seed
 after_failure:
   - "cat ./config/database.yml"
   - "echo $RAILS_ENV"
