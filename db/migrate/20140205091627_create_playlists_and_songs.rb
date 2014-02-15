@@ -8,6 +8,7 @@ class CreatePlaylistsAndSongs < ActiveRecord::Migration
  
     create_table :songs do |t|
       t.string :spotify_id
+      t.belongs_to :donation
       t.timestamps
     end
  

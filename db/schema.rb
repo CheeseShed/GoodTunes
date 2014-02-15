@@ -55,8 +55,15 @@ ActiveRecord::Schema.define(version: 20140212214146) do
     t.datetime "thirdImage_updated_at"
   end
 
-# Could not dump table "songs" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
+  create_table "songs", force: true do |t|
+    t.string   "spotify_id"
+    t.integer  "donation_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.string   "artist"
+    t.string   "uri"
+  end
 
   create_table "users", force: true do |t|
     t.string   "name"

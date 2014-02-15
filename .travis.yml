@@ -1,0 +1,7 @@
+deploy:
+  provider: heroku
+  api_key:
+    secure: GDApQ045u6gIzaBckvvbOa1nJ5DDzpHLPcEkeiJ46Zd9RpCdZLQYy3j+7FSGNRQF6cgzKrvsxysyDR9Tnp76xl1B+AJLpArSCiIDmSf2xOZ2/RlFXKX9SdMA6VENiaE7YlPEfOaQaq2Bpofz5sAyBc43MQnVdrDEtcLkSflhj3o=
+  app: goodtunes-staging
+  on:
+    repo: CheeseShed/GoodTunes
