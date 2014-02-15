@@ -5,3 +5,8 @@ deploy:
   app: goodtunes-staging
   on:
     repo: CheeseShed/GoodTunes
+before_script:
+  - bundle exec rake db:drop
+  - bundle exec rake db:migrate
+  - bundle exec rake db:seed
+
