@@ -93,3 +93,10 @@
 <% else %>
   <p><b><%= link_to "Sign in with Facebook to add a song", "/auth/facebook?redirect_uri=/races/#{@race.id}", id: "sign_in" %></b></p>
 <% end %>
+
+<script type="text/javascript">
+  $(function() {
+    window.router = new GoodTunes.Routers.AppRouter({races: <%= @racesjson.to_json.html_safe -%>, users: <%= @usersjson.to_json.html_safe -%>});
+    Backbone.history.start();
+  });
+</script>

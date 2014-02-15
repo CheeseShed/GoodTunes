@@ -22,3 +22,10 @@ this is you
 	<li><%= link_to race.name, race_path(race) %></p></li>
 <% end %>
 </ul>
+
+<script type="text/javascript">
+  $(function() {
+    window.router = new GoodTunes.Routers.AppRouter({races: <%= @racesjson.to_json.html_safe -%>, users: <%= @usersjson.to_json.html_safe -%>});
+    Backbone.history.start();
+  });
+</script>

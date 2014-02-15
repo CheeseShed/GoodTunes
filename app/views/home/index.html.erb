@@ -1,35 +1,11 @@
 <h1>goodtunes homepage</h1>
 
-<div id="user-widget" style="border: 1px solid #333; padding: 10px; margin: 10px">
+<div id="user-widget">
   <% if current_user %>
     Welcome <strong><%= current_user.name %></strong>!
     <%= link_to "Sign out", signout_path, id: "sign_out" %>
-
-    <% if !current_user.isRunner %>
-      
-      <p>you are signed-in to donate.</p>
-
-      <%= form_for(current_user) do |f| %>
-        <div class="field">
-          <%= f.hidden_field :name %>
-          <%= f.hidden_field :provider %>
-          <%= f.hidden_field :uid %>
-          <%= f.hidden_field :oauth_token %>
-          <%= f.hidden_field :oauth_expires_at %>
-        </div>
-        <div class="field">
-          <%= f.label "do you want to sign up as a runner too?" %><br>
-          <%= f.check_box :isRunner %>
-        </div>
-        <div class="actions">
-          <%= f.submit "update my profile" %>
-        </div>
-      <% end %>
-    <% else %>
-      <p>you are signed in as a runner</p>
-      <p><%= link_to 'add a race', new_race_path %></p>
-      <p><%= link_to 'see my race playlists', user_path(current_user.id) %></p>   
-    <% end %>  
+    <%= link_to "Edit my profile", edit_user_path(current_user) %>
+    
 
     <% else %>
       <p><%= link_to "Sign in with Facebook as a RUNNER", "/auth/facebook?runner=true", id: "sign_in" %></p>

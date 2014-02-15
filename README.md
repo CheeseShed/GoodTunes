@@ -1,6 +1,8 @@
 GoodTunes
 =========
 
+[![Build Status](https://api.travis-ci.org/CheeseShed/GoodTunes.png)](https://travis-ci.org/CheeseShed/GoodTunes)
+
 Charity Marathon Running Sponsored Spotify Playlist Creator
 
 ### To run the app locally

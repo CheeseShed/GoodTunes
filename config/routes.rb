@@ -1,17 +1,15 @@
 GoodTunes::Application.routes.draw do
 
-  resources :donations
-
   get 'songs/search' => 'songs#search'
 
-  resources :songs
+  resources :songs, only: [:search, :create]
 
   resources :races
 
   resources :users, :path => "runners"
 
   # You can have the root of your site routed with "root"
-  root 'home#index'
+  root 'races#index'
 
   # Facebook shizzle
   match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]

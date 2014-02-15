@@ -1,17 +1,6 @@
 class DonationsController < ApplicationController
   before_action :set_donation, only: [:show, :edit, :update, :destroy]
 
-  # GET /donations
-  # GET /donations.json
-  def index
-    @donations = Donation.all
-  end
-
-  # GET /donations/1
-  # GET /donations/1.json
-  def show
-  end
-
   # GET /donations/new
   def new
     @donation = Donation.new

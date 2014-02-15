@@ -10,29 +10,6 @@ class SongsController < ApplicationController
     @results = search
 
     @donationId = User.find(session[:user_id]).donations.includes(:song).where(songs:{id: nil}).first.id
-
-    logger.info("& & & & & & & & & & & & & & & & & & & & &")
-    logger.info("& & & & & & & & & & & & & & & & & & & & &")
-    logger.info("& & & & & & & & & & & & & & & & & & & & &")
-    logger.info("& & & & & & & & & & & & & & & & & & & & &")
-    logger.info("& & & & & & & & & & & & & & & & & & & & &")
-    logger.info("& & & & & & & & & & & & & & & & & & & & &")
-    logger.info("& & & & & & & & & & & & & & & & & & & & &")
-    logger.info("& & & & & & & & & & & & & & & & & & & & &")
-    logger.info("& & & & & & & & & & & & & & & & & & & & &")
-    logger.info("& & & & & & & & & & & & & & & & & & & & &")
-    logger.info(@donationId)
-  end
-
-  # GET /songs
-  # GET /songs.json
-  def index
-    @songs = Song.all
-  end
-
-  # GET /songs/1
-  # GET /songs/1.json
-  def show
   end
 
   # GET /songs/new

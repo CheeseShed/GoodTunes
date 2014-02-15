@@ -5,6 +5,9 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
+    
+    @racesjson = Race.all().as_json( :include => { :playlist => { :include => { :songs => {} } } } )
+    @usersjson = @users.as_json
   end
 
   # GET /users/1
@@ -19,6 +22,9 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    if current_user != @user
+      redirect_to root_url
+    end
   end
 
   # POST /users

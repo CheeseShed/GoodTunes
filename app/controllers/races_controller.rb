@@ -5,6 +5,14 @@ class RacesController < ApplicationController
   # GET /races.json
   def index
     @races = Race.all
+
+    @racesjson = @races.as_json( :include => { :playlist => { :include => { :songs => {} } } } )
+    @usersjson = User.all().as_json
+
+    respond_to do |format|
+      format.html
+      format.json { render :json => @races, :include => { :playlist => { :include => { :songs => {} } } } }
+    end
   end
 
   # GET /races/1
