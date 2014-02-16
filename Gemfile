@@ -19,14 +19,12 @@ gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
-group :test do
-  gem 'cucumber'
-  gem 'rspec-expectations'
-  gem 'poltergeist', ">= 1.4.0"
-  gem 'selenium-webdriver'
-  gem 'launchy'
-  gem 'rest-client'
-end
+gem "cucumber-rails", :group => :test, :require => false
+gem "capybara", :group => :test
+gem "database_cleaner", :group => :test
+gem "email_spec", :group => :test
+gem 'rspec-expectations', :group => :test
+gem 'poltergeist', ">= 1.4.0", :group => :test
 
 group :development, :test do
 	# Use sqlite3 as the database for Active Record

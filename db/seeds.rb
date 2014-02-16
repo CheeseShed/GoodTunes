@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 case Rails.env
-when "development"
+when "development", "test"
 	Donation.create!([
 	  {user_id: 1, donationId: "abc"},
 	  {user_id: 1, donationId: "abc"},

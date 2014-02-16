@@ -2,6 +2,8 @@
 #require_relative 'storage.rb'
 
 Before do
+  load "#{Rails.root}/db/seeds.rb"
+  
   #delete_database backend_url('playlists')
 end
 
