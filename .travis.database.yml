@@ -1,8 +1,0 @@
-test:
-  adapter: sqlite3
-  database: ":memory:"
-  timeout: 500
-cucumber:
-  adapter: sqlite3
-  database: ":memory:"
-  timeout: 500

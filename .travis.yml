@@ -8,11 +8,6 @@ deploy:
 env: 
   - RAILS_ENV=test
 before_script:
-  - "cp ./.travis.database.yml ./config/database.yml"
-script: 
+  - bundle exec rake db:create
   - bundle exec rake db:migrate
   - bundle exec rake db:seed
-after_failure:
-  - "cat ./config/database.yml"
-  - "echo $RAILS_ENV"
-  - "bundle exec rake --version"
