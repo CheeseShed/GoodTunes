@@ -22,7 +22,7 @@ deploy:
   on:
     repo: CheeseShed/GoodTunes
   run:
-    - pg:reset HEROKU_POSTGRESQL_GOLD_URL
+    - pg:reset postgres://otxdkupbnhsszb:FdLlU_KL3C9KehETavPXHg8R9z@ec2-54-247-64-118.eu-west-1.compute.amazonaws.com:5432/ddrtmf8d94l6ju
     - "rake db:create db:migrate db:seed"
 
 notifications:
