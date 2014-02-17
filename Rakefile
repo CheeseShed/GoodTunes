@@ -7,6 +7,8 @@ GoodTunes::Application.load_tasks
 
 desc 'This rebuilds development db'
 task :rebuild do
+  puts "doing a bundle install"
+  cmd = "bundle install"; puts cmd; system cmd;
   puts "dropping db..."
   Rake::Task["db:drop"].invoke
   puts "migrating db..."

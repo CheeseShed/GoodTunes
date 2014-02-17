@@ -9,7 +9,7 @@ before_install:
   - 'echo ''gem: --no-ri --no-rdoc'' > ~/.gemrc' # skip installing docs for gems
 
 before_script:
-  - RAILS_ENV=test bundle exec rake db:create db:migrate db:seed
+  - RAILS_ENV=test bundle exec rake db:create db:migrate
 
 script:
   - RAILS_ENV=test bundle exec rake
@@ -21,4 +21,10 @@ deploy:
   app: goodtunes-staging
   on:
     repo: CheeseShed/GoodTunes
+  run: "rake db:drop db:migrate db:seed"
 
+notifications:
+  email:
+    - paul@paulcarvill.com
+    - jamie.newman@gmail.com
+    - ihuntington85@gmail.com
