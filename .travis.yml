@@ -3,7 +3,7 @@ language: ruby
 bundler_args: --without development production
 
 rvm:
-  - 2.0.0
+  - 2.1.0
 
 before_install:
   - 'echo ''gem: --no-ri --no-rdoc'' > ~/.gemrc' # skip installing docs for gems
@@ -21,7 +21,9 @@ deploy:
   app: goodtunes-staging
   on:
     repo: CheeseShed/GoodTunes
-  run: "rake db:drop db:migrate db:seed"
+  run:
+    - "pg:reset HEROKU_POSTGRESQL_GOLD_URL"
+    - "rake db:create db:migrate db:seed"
 
 notifications:
   email:
