@@ -16,6 +16,11 @@ script:
 
 after_success:
   - wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+  - git remote add heroku git@heroku.com:goodtunes-staging.git
+  - echo "Host heroku.com" >> ~/.ssh/config
+  - echo "   StrictHostKeyChecking no" >> ~/.ssh/config
+  - echo "   CheckHostIP no" >> ~/.ssh/config
+  - echo "   UserKnownHostsFile=/dev/null" >> ~/.ssh/config
   - heroku pg:reset HEROKU_POSTGRESQL_GOLD_URL --confirm goodtunes-staging
 
 deploy:
