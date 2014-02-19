@@ -5,6 +5,10 @@ bundler_args: --without development production
 rvm:
   - 2.1.0
 
+env:
+  global:
+    - secure: GDApQ045u6gIzaBckvvbOa1nJ5DDzpHLPcEkeiJ46Zd9RpCdZLQYy3j+7FSGNRQF6cgzKrvsxysyDR9Tnp76xl1B+AJLpArSCiIDmSf2xOZ2/RlFXKX9SdMA6VENiaE7YlPEfOaQaq2Bpofz5sAyBc43MQnVdrDEtcLkSflhj3o=
+
 before_install:
   - 'echo ''gem: --no-ri --no-rdoc'' > ~/.gemrc' # skip installing docs for gems
 
@@ -21,6 +25,8 @@ after_success:
   - echo "   StrictHostKeyChecking no" >> ~/.ssh/config
   - echo "   CheckHostIP no" >> ~/.ssh/config
   - echo "   UserKnownHostsFile=/dev/null" >> ~/.ssh/config
+  - heroku keys:clear
+  - yes | heroku keys:add
   - heroku pg:reset HEROKU_POSTGRESQL_GOLD_URL --confirm goodtunes-staging
 
 deploy:
