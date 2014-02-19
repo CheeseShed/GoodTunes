@@ -16,6 +16,7 @@ script:
 
 after_success:
   - wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+  - heroku pg:reset HEROKU_POSTGRESQL_GOLD_URL --confirm goodtunes-staging
 
 deploy:
   provider: heroku
@@ -25,9 +26,6 @@ deploy:
   on:
     repo: CheeseShed/GoodTunes
   run:
-    - pg:reset HEROKU_POSTGRESQL_GOLD_URL --confirm goodtunes-staging
-    - heroku pg:reset HEROKU_POSTGRESQL_GOLD_URL --confirm goodtunes-staging
-    - "heroku pg:reset HEROKU_POSTGRESQL_GOLD_URL --confirm goodtunes-staging"
     - "rake db:create db:migrate db:seed"
 
 notifications:
