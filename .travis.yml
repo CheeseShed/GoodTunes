@@ -9,16 +9,26 @@ env:
   global:
     - secure: GDApQ045u6gIzaBckvvbOa1nJ5DDzpHLPcEkeiJ46Zd9RpCdZLQYy3j+7FSGNRQF6cgzKrvsxysyDR9Tnp76xl1B+AJLpArSCiIDmSf2xOZ2/RlFXKX9SdMA6VENiaE7YlPEfOaQaq2Bpofz5sAyBc43MQnVdrDEtcLkSflhj3o=
 
-after_success:
-    - gem install heroku
-    - git remote add heroku git@heroku.com:goodtunes-staging.git
-    - echo "Host heroku.com" >> ~/.ssh/config
-    - echo "   StrictHostKeyChecking no" >> ~/.ssh/config
-    - echo "   CheckHostIP no" >> ~/.ssh/config
-    - echo "   UserKnownHostsFile=/dev/null" >> ~/.ssh/config
-    - heroku keys:clear
-    - yes | heroku keys:add
-
+after_script:
+  # Install the Heroku package (or the Heroku toolbelt)
+  - npm install heroku
+  # Add your Heroku git repo:
+  - git remote add heroku git@heroku.com:goodtunes-staging.git
+  # Add your Heroku API key:
+  - export HEROKU_API_KEY=GDApQ045u6gIzaBckvvbOa1nJ5DDzpHLPcEkeiJ46Zd9RpCdZLQYy3j+7FSGNRQF6cgzKrvsxysyDR9Tnp76xl1B+AJLpArSCiIDmSf2xOZ2/RlFXKX9SdMA6VENiaE7YlPEfOaQaq2Bpofz5sAyBc43MQnVdrDEtcLkSflhj3o=
+  # Turn off warnings about SSH keys:
+  - echo "Host heroku.com" >> ~/.ssh/config
+  - echo "   StrictHostKeyChecking no" >> ~/.ssh/config
+  - echo "   CheckHostIP no" >> ~/.ssh/config
+  - echo "   UserKnownHostsFile=/dev/null" >> ~/.ssh/config
+  # Download and install Heroku toolbelt locally
+  - wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+  # Clear your current Heroku SSH keys:
+  - heroku keys:clear
+  # Add a new SSH key to Heroku
+  - yes | heroku keys:add
+  # Push to Heroku!
+  - yes | git push heroku master
 
 notifications:
   email:
