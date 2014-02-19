@@ -38,6 +38,9 @@
 <script type="text/javascript">
   $(function() {
     window.router = new GoodTunes.Routers.AppRouter({races: <%= @racesjson.to_json.html_safe -%>, users: <%= @usersjson.to_json.html_safe -%>});
+
+    window.login = new GoodTunes.Views.Logins.LoginView( { 'el' : $('#log') } )
+
     Backbone.history.start();
   });
 </script>

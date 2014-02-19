@@ -10,7 +10,7 @@
 
 <%= yield %>
 
-<ul style="border-top: 5px dotted #aaa; padding-top: 20px; margin-top: 50px">
+<ul id="log" style="border-top: 5px dotted #aaa; padding-top: 20px; margin-top: 50px">
   <li><%= link_to 'races', races_path %> (go to a race page to donate + choose a song e.g. <a href="/races/1">race 1</a>)</li>
   <li><%= link_to 'runners', users_path %></li>
   <% if current_user %>
