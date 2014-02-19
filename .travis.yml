@@ -14,6 +14,9 @@ before_script:
 script:
   - RAILS_ENV=test bundle exec rake
 
+after_success:
+  - wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+
 deploy:
   provider: heroku
   api_key:
@@ -22,7 +25,8 @@ deploy:
   on:
     repo: CheeseShed/GoodTunes
   run:
-    - wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+    - pg:reset HEROKU_POSTGRESQL_GOLD_URL --confirm goodtunes-staging
+    - heroku pg:reset HEROKU_POSTGRESQL_GOLD_URL --confirm goodtunes-staging
     - "heroku pg:reset HEROKU_POSTGRESQL_GOLD_URL --confirm goodtunes-staging"
     - "rake db:create db:migrate db:seed"
 
