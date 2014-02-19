@@ -1,46 +1,19 @@
-language: ruby
-
-bundler_args: --without development production
-
-rvm:
-  - 2.1.0
 
 env:
   global:
     - secure: GDApQ045u6gIzaBckvvbOa1nJ5DDzpHLPcEkeiJ46Zd9RpCdZLQYy3j+7FSGNRQF6cgzKrvsxysyDR9Tnp76xl1B+AJLpArSCiIDmSf2xOZ2/RlFXKX9SdMA6VENiaE7YlPEfOaQaq2Bpofz5sAyBc43MQnVdrDEtcLkSflhj3o=
 
-before_install:
-  - 'echo ''gem: --no-ri --no-rdoc'' > ~/.gemrc' # skip installing docs for gems
-
-before_script:
-  - RAILS_ENV=test bundle exec rake db:create db:migrate
-
-script:
-  - RAILS_ENV=test bundle exec rake
-
 after_success:
-  - wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
-  - git remote add heroku git@heroku.com:goodtunes-staging.git
-  - echo "Host heroku.com" >> ~/.ssh/config
-  - echo "   StrictHostKeyChecking no" >> ~/.ssh/config
-  - echo "   CheckHostIP no" >> ~/.ssh/config
-  - echo "   UserKnownHostsFile=/dev/null" >> ~/.ssh/config
-  - heroku keys:clear
-  - yes | heroku keys:add
-  - heroku pg:reset HEROKU_POSTGRESQL_GOLD_URL --confirm goodtunes-staging
+    - gem install heroku
+    - git remote add heroku git@heroku.com:goodtunes-staging.git
+    - echo "Host heroku.com" >> ~/.ssh/config
+    - echo "   StrictHostKeyChecking no" >> ~/.ssh/config
+    - echo "   CheckHostIP no" >> ~/.ssh/config
+    - echo "   UserKnownHostsFile=/dev/null" >> ~/.ssh/config
+    - heroku keys:clear
+    - yes | heroku keys:add
 
-deploy:
-  provider: heroku
-  api_key:
-    secure: GDApQ045u6gIzaBckvvbOa1nJ5DDzpHLPcEkeiJ46Zd9RpCdZLQYy3j+7FSGNRQF6cgzKrvsxysyDR9Tnp76xl1B+AJLpArSCiIDmSf2xOZ2/RlFXKX9SdMA6VENiaE7YlPEfOaQaq2Bpofz5sAyBc43MQnVdrDEtcLkSflhj3o=
-  app: goodtunes-staging
-  on:
-    repo: CheeseShed/GoodTunes
-  run:
-    - "rake db:create db:migrate db:seed"
 
 notifications:
   email:
     - paul@paulcarvill.com
-    - jamie.newman@gmail.com
-    - ihuntington85@gmail.com
