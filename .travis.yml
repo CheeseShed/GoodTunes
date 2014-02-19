@@ -5,30 +5,13 @@ bundler_args: --without development production
 rvm:
   - 2.1.0
 
-env:
-  global:
-    - secure: GDApQ045u6gIzaBckvvbOa1nJ5DDzpHLPcEkeiJ46Zd9RpCdZLQYy3j+7FSGNRQF6cgzKrvsxysyDR9Tnp76xl1B+AJLpArSCiIDmSf2xOZ2/RlFXKX9SdMA6VENiaE7YlPEfOaQaq2Bpofz5sAyBc43MQnVdrDEtcLkSflhj3o=
-
 after_script:
-  # Install the Heroku package (or the Heroku toolbelt)
-  - npm install heroku
-  # Add your Heroku git repo:
-  - git remote add heroku git@heroku.com:goodtunes-staging.git
-  # Add your Heroku API key:
-  - export HEROKU_API_KEY=GDApQ045u6gIzaBckvvbOa1nJ5DDzpHLPcEkeiJ46Zd9RpCdZLQYy3j+7FSGNRQF6cgzKrvsxysyDR9Tnp76xl1B+AJLpArSCiIDmSf2xOZ2/RlFXKX9SdMA6VENiaE7YlPEfOaQaq2Bpofz5sAyBc43MQnVdrDEtcLkSflhj3o=
-  # Turn off warnings about SSH keys:
-  - echo "Host heroku.com" >> ~/.ssh/config
-  - echo "   StrictHostKeyChecking no" >> ~/.ssh/config
-  - echo "   CheckHostIP no" >> ~/.ssh/config
-  - echo "   UserKnownHostsFile=/dev/null" >> ~/.ssh/config
-  # Download and install Heroku toolbelt locally
-  - wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
-  # Clear your current Heroku SSH keys:
+  - gem install heroku
+  - export HEROKU_API_KEY=ER/0jtJUjLieq0tOEMW3nLQruFqWhLyGL1QqrTnoj0AAkRrbsyMiBYIPeqG3fZJbkqQh+enJrFUayFa1/KQa5t9ayODH+eIRTkuk7OcVfuAZmWUctyrgHppHb9Z7OidIoHNKwMpIqjjThRydry/+5WLaRsI6fCFDg8G6y8n43wg=
+  - yes | ruby travis_deployer.rb
   - heroku keys:clear
-  # Add a new SSH key to Heroku
   - yes | heroku keys:add
-  # Push to Heroku!
-  - yes | git push heroku master
+  - git push heroku master # or whatever your heroku push looks like
 
 notifications:
   email:
