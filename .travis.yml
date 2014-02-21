@@ -21,6 +21,7 @@ deploy:
   app: goodtunes-staging
   on:
     repo: CheeseShed/GoodTunes
+    branch: staging
 
 notifications:
   email:
