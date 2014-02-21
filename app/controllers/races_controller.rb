@@ -24,6 +24,7 @@ class RacesController < ApplicationController
   # GET /races/new
   def new
     if current_user and current_user.isRunner
+      response.headers['X-CSRF-Token'] = form_authenticity_token
       @race = current_user.races.new
     else
       redirect_to root_url
@@ -32,6 +33,12 @@ class RacesController < ApplicationController
 
   # GET /races/1/edit
   def edit
+    if current_user != @race.user
+      return respond_to do |format|
+          format.json { render :json => [], :status => :unauthorized }
+          format.html { render :file => "public/403.html", :status => :unauthorized, :layout => false }
+        end
+    end
   end
 
   # POST /races

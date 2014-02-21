@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   def create
+    logger.info('here')
   	user = User.from_omniauth(env["omniauth.auth"], request.env["omniauth.params"]["runner"])
   	session[:user_id] = user.id
     redirect_to request.env['omniauth.origin'] || '/'

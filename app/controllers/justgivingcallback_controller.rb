@@ -1,6 +1,9 @@
 require 'net/http'
 
 class JustgivingcallbackController < ApplicationController
+	
+	before_filter :check_user_logged_in_and_find_playlist, only: [:index]
+
 	def index
 
 		@donationId = params[:donationId]
@@ -52,4 +55,15 @@ class JustgivingcallbackController < ApplicationController
 	def create
 		logger.info(params)
 	end
+
+	protected
+
+    def check_user_logged_in_and_find_playlist
+      if !session[:user_id] || !params[:donationId]
+        respond_to do |format|
+          format.json { render :json => [], :status => :unauthorized }
+          format.html { render :file => "public/401.html", :status => :unauthorized, :layout => false }
+        end
+      end
+    end
 end

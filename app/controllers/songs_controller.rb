@@ -1,12 +1,14 @@
 class SongsController < ApplicationController
+
+  
+
   before_action :set_song, only: [:show, :edit, :update, :destroy]
 
-  before_filter :find_playlist, only: [:create, :search]
+  before_filter :check_user_logged_in_and_find_playlist, only: [:create, :search]
 
   def search
     song = params[:song]
     search = MetaSpotify::Track.search(song)
-    logger.info(search)
     @results = search
 
     @donationId = User.find(session[:user_id]).donations.includes(:song).where(songs:{id: nil}).first.id
@@ -38,19 +40,6 @@ class SongsController < ApplicationController
       flash[:alert] = "There was a problem saving the song."
     end
     redirect_to(race_path(params[:race_id]))
-
-
-    # @song = Song.new(song_params)
-
-    # respond_to do |format|
-    #   if @song.save
-    #     format.html { redirect_to @song, notice: 'Song was successfully created.' }
-    #     format.json { render action: 'show', status: :created, location: @song }
-    #   else
-    #     format.html { render action: 'new' }
-    #     format.json { render json: @song.errors, status: :unprocessable_entity }
-    #   end
-    # end
   end
 
   # PATCH/PUT /songs/1
@@ -79,7 +68,13 @@ class SongsController < ApplicationController
 
   protected
 
-    def find_playlist
+    def check_user_logged_in_and_find_playlist
+      if !session[:user_id]
+        return respond_to do |format|
+          format.json { render :json => [], :status => :unauthorized }
+          format.html { render :file => "public/401.html", :status => :unauthorized, :layout => false }
+        end
+      end
       @playlist = Playlist.find(params[:playlist_id])
     end
 
