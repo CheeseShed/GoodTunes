@@ -21,19 +21,16 @@ gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
-#gem "cucumber-rails", :group => :test, :require => false
-#gem "capybara", :group => :test
-#gem "database_cleaner", :group => :test
-#gem "email_spec", :group => :test
-#gem 'rspec-expectations', :group => :test
-#gem 'poltergeist', ">= 1.4.0", :group => :test
-
 group :development, :test do
 	# Use sqlite3 as the database for Active Record
 	gem 'sqlite3'
+	gem 'jasmine-rails'
+	gem 'rspec-rails'
+	gem "factory_girl_rails"
+	gem "database_cleaner"
 end
 
-group :production, :staging do
+group :production do
 	gem 'pg'
 	gem 'rails_12factor'
 end
@@ -43,25 +40,16 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+# for authentication
 gem 'omniauth-facebook'
 
+# for searching spotify for songs
 gem 'meta-spotify'
 
 gem "rails-backbone"
 
 gem "seed_dump"
 
+# for our image uploads
 gem 'paperclip'
 gem 'aws-sdk'
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]

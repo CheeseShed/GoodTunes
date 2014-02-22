@@ -1,5 +1,6 @@
 GoodTunes::Application.routes.draw do
 
+  mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
   get 'songs/search' => 'songs#search'
 
   resources :songs, only: [:search, :create]

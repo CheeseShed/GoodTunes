@@ -25,4 +25,6 @@ class User < ActiveRecord::Base
       false
     end
   end
+
+  validates :name, presence: true
 end
