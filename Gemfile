@@ -32,6 +32,7 @@ group :development, :test do
 	gem "capybara"
 	gem 'coveralls', require: false
 	gem 'selenium-webdriver'
+	gem 'poltergeist'
 end
 
 group :production do
