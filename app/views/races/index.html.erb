@@ -17,19 +17,7 @@
 
     <tbody>
       <% @races.each do |race| %>
-        <tr>
-          <td><%= race.name %></td>
-          <td><%= race.description %></td>
-          <td><%= race.date %></td>
-          <td><%= race.target %></td>
-          <td><%= link_to 'Show', race %></td>
-          
-          <% if race.can_modify?(current_user) %>
-            <td><%= link_to 'Edit', edit_race_path(race) %></td>
-            <td><%= link_to 'Delete', race, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          <% end %>
-
-        </tr>
+        <%= render 'race', :race => race %>
       <% end %>
     </tbody>
   </table>

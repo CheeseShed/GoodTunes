@@ -12,10 +12,7 @@
 
   <tbody>
     <% @users.each do |user| %>
-      <tr>
-        <td><%= user.name %></td>
-        <td><%= link_to 'Show', user %></td>
-      </tr>
+      <%= render 'user', :user => user %>
     <% end %>
   </tbody>
 </table>

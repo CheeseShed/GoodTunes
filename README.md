@@ -13,10 +13,10 @@ Charity Marathon Running Sponsored Spotify Playlist Creator
 * `vagrant up`
 * `vagrant ssh`
 * `cd /vagrant`
-* bundle install
-* rake db:drop
-* rake db:migrate
-* rake db:seed
+* `bundle install`
+* `rake db:drop`
+* `rake db:migrate`
+* `rake db:seed`
 * `rails server`
 
 then on your local machine browse to:
@@ -81,6 +81,12 @@ All endpoints return JSON.
 
 All the PUT, POST and DELETE methods require a user to be signed-in.
 
-useful:
+
+## Docs
+
+Cucumber feature-generated docs on Relish here: [https://www.relishapp.com/GoodTunes/GoodTunes/docs](https://www.relishapp.com/GoodTunes/GoodTunes/docs)
+
+
+## Useful
 
 https://github.com/codebrew/backbone-rails
