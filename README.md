@@ -81,6 +81,13 @@ All endpoints return JSON.
 
 All the PUT, POST and DELETE methods require a user to be signed-in.
 
+## Tests
+
+rake spec
+rake cucumber
+rake jasmine
+
+http://localhost:3000/specs
 
 ## Docs
 

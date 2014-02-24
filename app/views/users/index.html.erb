@@ -12,7 +12,7 @@
 
   <tbody>
     <% @users.each do |user| %>
-      <%= render 'user', :user => user %>
+      <%= render 'user', :mustache => { name: user.name, id: user.id } %>
     <% end %>
   </tbody>
 </table>

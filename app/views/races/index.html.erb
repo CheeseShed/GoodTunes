@@ -17,7 +17,7 @@
 
     <tbody>
       <% @races.each do |race| %>
-        <%= render 'race', :race => race %>
+        <%= render 'race', :mustache => {name: race.name, description: race.description, id: race.id} %>
       <% end %>
     </tbody>
   </table>

@@ -1,7 +1,7 @@
 GoodTunes.Views.Users ||= {}
 
 class GoodTunes.Views.Users.UserView extends Backbone.View
-  template: JST["backbone/templates/users/user"]
+  template: SMT['users/user']
 
   events:
     "click .destroy" : "destroy"

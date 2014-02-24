@@ -21,6 +21,8 @@ gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+gem 'smt_rails'
+
 group :development, :test do
 	# Use sqlite3 as the database for Active Record
 	gem 'sqlite3'
