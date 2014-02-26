@@ -1,12 +1,11 @@
 <div id="bb">
 
-<h1>Listing runners</h1>
+<h1>nojs Listing all runners on GoodTunes</h1>
 
-<table>
+<table border=1 cellpadding=10 cellspacing=0>
   <thead>
     <tr>
-      <th></th>
-      <th></th>
+      <th>Name</th>
     </tr>
   </thead>
 
@@ -17,12 +16,3 @@
   </tbody>
 </table>
 </div>
-
-<script type="text/javascript">
-  $(function() {
-    window.router = new GoodTunes.Routers.AppRouter({races: <%= @racesjson.to_json.html_safe -%>, users: <%= @usersjson.to_json.html_safe -%>});
-
-    Backbone.history.start();
-    window.router.navigate('runners/index', true);
-  });
-</script>

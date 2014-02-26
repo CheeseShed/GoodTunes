@@ -1,9 +1,29 @@
-<p id="notice"><%= notice %></p>
+<div id="bb">
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
+	<h1>nojs Listing single runner on GoodTunes</h1>
+	<h2>User <%= @user.id %></h2>
+	<p id="notice"><%= notice %></p>
+
+	<table border=1 cellpadding=10 cellspacing=0>
+	  <thead>
+	    <tr>
+	      <th>Name</th>
+	      <th>Races</th>
+	    </tr>
+	  </thead>
+
+	  <tbody>
+	      <tr>
+	      	<td><%= @user.name %></td>
+	      	<td>
+	      		<% @user.races.each do |race| %>
+	      		<p><%= link_to race.name, race_path(race) %></p>
+				<% end %>
+			</td>
+	      </tr>
+	  </tbody>
+	</table>
+
 
 <% if @user == current_user %>
 this is you
@@ -17,15 +37,4 @@ this is you
 	<% end %>
 <% end %>
 
-<ul>
-<% @user.races.each do |race| %>
-	<li><%= link_to race.name, race_path(race) %></p></li>
-<% end %>
-</ul>
-
-<script type="text/javascript">
-  $(function() {
-    window.router = new GoodTunes.Routers.AppRouter({races: <%= @racesjson.to_json.html_safe -%>, users: <%= @usersjson.to_json.html_safe -%>});
-    Backbone.history.start();
-  });
-</script>
+</div>

@@ -28,6 +28,8 @@ class GoodTunes.Routers.AppRouter extends Backbone.Router
   raceShow: (id) ->
     race = @races.get(id)
 
+    # horrid hack to get mustache view working...
+    race.set( { songs : race.get('playlist').songs })
     @view = new GoodTunes.Views.Races.ShowView(model: race)
     $("#bb").html(@view.render().el)
 

@@ -1,34 +1,21 @@
 <div id="bb">
 
-  <h1>Listing all races on GoodTunes</h1>
+  <h1>nojs Listing all races on GoodTunes</h1>
   
-  <table>
+  <table border=1 cellpadding=10 cellspacing=0>
     <thead>
       <tr>
         <th>Name</th>
         <th>Description</th>
         <th>Date</th>
         <th>Target</th>
-        <th></th>
-        <th></th>
-        <th></th>
       </tr>
     </thead>
 
     <tbody>
       <% @races.each do |race| %>
-        <%= render 'race', :mustache => {name: race.name, description: race.description, id: race.id} %>
+        <%= render 'race', :mustache => {name: race.name, description: race.description, id: race.id, date: race.date, target: race.target} %>
       <% end %>
     </tbody>
   </table>
 </div>
-
-<script type="text/javascript">
-  $(function() {
-    window.router = new GoodTunes.Routers.AppRouter({races: <%= @racesjson.to_json.html_safe -%>, users: <%= @usersjson.to_json.html_safe -%>});
-
-    window.login = new GoodTunes.Views.Logins.LoginView( { 'el' : $('#log') } )
-
-    Backbone.history.start();
-  });
-</script>

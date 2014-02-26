@@ -1,0 +1,29 @@
+<p><b>Name:</b>{{name}}</p>
+<p><b>Description:</b>{{description}}</p>
+<p><b>Date:</b>{{date}}</p>
+<p><b>Target:</b>{{target}}</p>
+
+<p>Songs added so far:
+    <ul>
+      {{#songs}}
+      	song here: {{>races/song}}.
+      {{/songs}}
+    </ul>
+</p>
+
+
+<p><b>Mainimage:</b>{{mainImage_file_name}}</p>
+<p><b>Secondimage:</b>{{secondImage_file_name}}</p>
+<p><b>Thirdimage:</b>{{thirdImage_file_name}}</p>
+
+<hr>
+{{#can_modify}}
+	<%= link_to 'Edit', edit_race_path(@race) %> |
+{{/can_modify}}
+{{^can_modify}}
+	no can modify
+{{/can_modify}}
+<hr>
+
+<a href="#/races/index">All races</a>
+<a href="#/runners/index">All runners</a>

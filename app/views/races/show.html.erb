@@ -1,64 +1,51 @@
-<p id="notice"><%= notice %></p>
+<div id="bb">
 
-<p>
-  <strong>Name:</strong>
-  <%= @race.name %>
-</p>
+  <h1>nojs Listing a single race on GoodTunes</h1>
+  <h2>Race <%= @race.id %></h2>
 
-<p>
-  <strong>Description:</strong>
-  <%= @race.description %>
-</p>
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Date:</strong>
-  <%= @race.date %>
-</p>
+  <table border=1 cellpadding=10 cellspacing=0>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Date</th>
+        <th>Target</th>
+        <th>Songs so far...</th>
+        <th>img1</th>
+        <th>img2</th>
+        <th>img3</th>
+      </tr>
+    </thead>
 
-<p>
-  <strong>Target:</strong>
-  <%= @race.target %>
-</p>
+    <tbody>
+      <tr>
+        <td><%= @race.name %></td>
+        <td><%= @race.description %></td>
+        <td><%= @race.date %></td>
+        <td><%= @race.target %></td>
+        <td>
+          <% @race.playlist.songs.each do |song| %>
+            <p><a href="<%= song.uri %>"><%= song.name %></a> by <%= song.artist %></p>
+          <% end %>
+        </td>
+        <td>
+          <%= @race.mainImage %><br />
+          <img src="<%= @race.mainImage %>" width="100px" height="100px" />
+        </td>
+        <td>
+          <%= @race.secondImage %><br />
+          <img src="<%= @race.secondImage %>" width="100px" height="100px" />
+        </td>
+        <td>
+          <%= @race.thirdImage %><br />
+          <img src="<%= @race.thirdImage %>" width="100px" height="100px" />
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
-<p>Songs added so far:
-  <ul>
-    <% @race.playlist.songs.each do |song| %>
-      <li>
-      <ul>
-        <li>song spotify_id: <%= song.spotify_id %></li>
-        <li>song name: <%= song.name %></li>
-        <li>song artist: <%= song.artist %></li>
-        <li>song uri: <%= song.uri %></li>
-        <li>TODO: donated by: ???</li>
-      </ul>
-      </li>
-    <% end %>
-  </ul>
-</p>
-
-<p>
-  <strong>Mainimage:</strong>
-  <p>img url: <%= @race.mainImage %></p>
-  <img src="<%= @race.mainImage %>" width="100px" height="100px" />
-</p>
-
-<p>
-  <strong>Secondimage:</strong>
-  <p>img url: <%= @race.secondImage %></p>
-  <img src="<%= @race.secondImage %>" />
-</p>
-
-<p>
-  <strong>Thirdimage:</strong>
-  <p>img url: <%= @race.thirdImage %></p>
-  <img src="<%= @race.thirdImage %>" />
-</p>
-
-<p><!--Route:</strong><%= @race.route_id %>--></p>
-
-<p><!-- playlist <%= @race.user_id %> --></p>
-
-<p><!-- playlist <%= @race.playlist.id %> --></p>
 
 <% if @race.can_modify?(current_user) %>
   <%= link_to 'Edit', edit_race_path(@race) %> |
@@ -76,7 +63,7 @@
     <p>invalid donation code, sorry</p>
     <% end %>
 
-    <p>cannot pick a song yet yet:
+    <p>cannot pick a song yet yet:</p>
     <ul>
       <li>prod: <a href="http://www.justgiving.com/Paul-Carvill/donate?amount=1&exitUrl=http://0.0.0.0:3000/justgiving/callback?donationId=JUSTGIVING-DONATION-ID">make a real donation via justgiving</a></li>
       <li>dev: <a href="/justgiving/callback?donationId=55555">click here to bypass donation</a></li>
@@ -94,9 +81,4 @@
   <p><b><%= link_to "Sign in with Facebook to add a song", "/auth/facebook?redirect_uri=/races/#{@race.id}", id: "sign_in" %></b></p>
 <% end %>
 
-<script type="text/javascript">
-  $(function() {
-    window.router = new GoodTunes.Routers.AppRouter({races: <%= @racesjson.to_json.html_safe -%>, users: <%= @usersjson.to_json.html_safe -%>});
-    Backbone.history.start();
-  });
-</script>
+</div>

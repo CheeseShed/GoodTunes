@@ -18,6 +18,9 @@ class RacesController < ApplicationController
   # GET /races/1
   # GET /races/1.json
   def show
+    @racesjson = @race.as_json( :include => { :playlist => { :include => { :songs => {} } } } )
+    @usersjson = @race.user.as_json
+    @can_modify = @race.can_modify?(current_user)
     session[:race_id] = @race.id
   end
 
